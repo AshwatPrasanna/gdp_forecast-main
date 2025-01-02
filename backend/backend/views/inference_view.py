@@ -70,7 +70,7 @@ def get_inference(request):
             predicted_value * 0.5 * (denorm_ref_max - denorm_ref_min)
             + ((denorm_ref_max + denorm_ref_min) / 2)
         )
-        denormalized_value = max(0, denormalized_value)
+        denormalized_value = max(0, float(denormalized_value))
         return JsonResponse({'status': 'success', 'prediction': denormalized_value}, status=201)
     
     except Exception as e:
